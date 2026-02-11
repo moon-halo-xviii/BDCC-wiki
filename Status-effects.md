@@ -29,52 +29,52 @@
 
 | Return Type | Name |
 | -------- | -------- |
-| Buff | [buff](#buff-buff) |
-| bool | [checkAvoidedBuff](#bool-checkavoidedbuff) |
-| Array | [checkOnFightStart](#array-checkonfightstart) |
-| void | [combine](#void-combine) |
-| BaseCharacter | [contextGetEnemy](#basecharacter-contextgetenemy) |
-| String | [contextGetEnemyID](#string-contextgetenemyid) |
-| float | [getAccuracyMod](#float-getaccuracymod) |
-| Array | [getBuffs](#array-getbuffs) |
-| float | [getDamageMultiplierMod](#float-getdamagemultipliermod) |
-| float | [getDodgeMod](#float-getdodgemod) |
-| String | [getEffectDesc](#string-geteffectdesc) |
-| String | [getEffectImage](#string-geteffectimage) |
-| String | [getEffectName](#string-geteffectname) |
-| Color | [getIconColor](#color-geticoncolor) |
-| float | [getRecievedDamageMod](#float-getrecieveddamagemod) |
-| String | [getVisibleDescription](#string-getvisibledescription) |
-| void | [_init](#void-_init) |
-| void | [initArgs](#void-initargs) |
-| bool | [isDrugEffect](#bool-isdrugeffect) |
-| void | [loadData](#void-loaddata) |
-| void | [onFightEnd](#void-onfightend) |
-| void | [onFightStart](#void-onfightstart) |
-| void | [onSleeping](#void-onsleeping) |
-| void | [onSexEnded](#void-onsexended) |
-| void | [onSexEvent](#void-onsexevent) |
-| void | [onSexStarted](#void-onsexstarted) |
-| void | [processBattleTurn](#void-processbattleturn) |
-| void | [processBattleTurnContex](#void-processbattleturncontex) |
-| void | [processSexTurn](#void-processsexturn) |
-| void | [processSexTurnContex](#void-processsexturncontex) |
-| void | [processTime](#void-processtime) |
-| Dictionary | [saveData](#dictionary-savedata) |
-| void | [setCharacter](#void-setcharacter) |
-| bool | [shouldApplyTo](#bool-shouldapplyto) |
-| bool | [shouldHaveWideTooltip](#bool-shouldhavewideittooltip) |
-| void | [stop](#void-stop) |
+| Buff | [buff](#buff-buff-buffid-args--) |
+| bool | [checkAvoidedBuff](#bool-checkavoidedbuff-_npc--false) |
+| Array | [checkOnFightStart](#array-checkonfightstart-_npc-_contextdictionary) |
+| void | [combine](#void-combine-_newargs--) |
+| BaseCharacter | [contextGetEnemy](#basecharacter-contextgetenemy-_contextdictionary) |
+| String | [contextGetEnemyID](#string-contextgetenemyid-_contextdictionary) |
+| float | [getAccuracyMod](#float-getaccuracymod--) |
+| Array | [getBuffs](#array-getbuffs--) |
+| float | [getDamageMultiplierMod](#float-getdamagemultipliermod-_damagetype) |
+| float | [getDodgeMod](#float-getdodgemod--) |
+| String | [getEffectDesc](#string-geteffectdesc--) |
+| String | [getEffectImage](#string-geteffectimage--) |
+| String | [getEffectName](#string-geteffectname--) |
+| Color | [getIconColor](#color-geticoncolor----iconcolorblue) |
+| float | [getRecievedDamageMod](#float-getrecieveddamagemod-_damagetype) |
+| String | [getVisibleDescription](#string-getvisibledescription--) |
+| void | [_init](#void-_init--) |
+| void | [initArgs](#void-initargs-_args--) |
+| bool | [isDrugEffect](#bool-isdrugeffect----false) |
+| void | [loadData](#void-loaddata-_data) |
+| void | [onFightEnd](#void-onfightend-_contex--) |
+| void | [onFightStart](#void-onfightstart-_contex--) |
+| void | [onSleeping](#void-onsleeping--) |
+| void | [onSexEnded](#void-onsexended-_contex--) |
+| void | [onSexEvent](#void-onsexevent-_contex--) |
+| void | [onSexStarted](#void-onsexstarted-_contex--) |
+| void | [processBattleTurn](#void-processbattleturn--) |
+| void | [processBattleTurnContex](#void-processbattleturncontex-_contex--) |
+| void | [processSexTurn](#void-processsexturn--) |
+| void | [processSexTurnContex](#void-processsexturncontex-_contex--) |
+| void | [processTime](#void-processtime-_secondspassed-int) |
+| Dictionary | [saveData](#dictionary-savedata--) |
+| void | [setCharacter](#void-setcharacter-c) |
+| bool | [shouldApplyTo](#bool-shouldapplyto-_npc--false) |
+| bool | [shouldHaveWideTooltip](#bool-shouldhavewidetooltip----false) |
+| void | [stop](#void-stop--) |
 
 ## Property Descriptions
 
 ### *bool* alwaysCheckedForNPCs = false
-When true, the status effect is checked for all NPCs every time the game scene is updated. With each update, the [shouldApplyTo](#bool-shouldapplyto) method is called to check whether the effect should be applied or removed.
+When true, the status effect is checked for all NPCs every time the game scene is updated. With each update, the [shouldApplyTo](#bool-shouldapplyto-_npc--false) method is called to check whether the effect should be applied or removed.
 
 This property is useful for status effects triggered by character properties, such as "InHeat" or "Pregnancy". It's also used for status effects applied by clothing or bondage items, such as "BlindfoldedStatus" and "ArmsBoundStatus".
 
 ### *bool* alwaysCheckedForPlayer = false
-When true, the status effect is checked for the player character every time the game scene is updated. With each update, the [shouldApplyTo](#bool-shouldapplyto) method is called to check whether the effect should be applied or removed.
+When true, the status effect is checked for the player character every time the game scene is updated. With each update, the [shouldApplyTo](#bool-shouldapplyto-_npc--false) method is called to check whether the effect should be applied or removed.
 
 Like [alwaysCheckedForNPCs](#bool-alwayscheckedfornpcs--false), this property is useful for status effects triggered by character properties and clothing items. Examples of player-exclusive status effects include "Intoxicated", since NPCs don't have an intoxication property, and "NakedStatus", since naked NPCs don't experience the same buffs and debuffs as naked player characters.
 
@@ -103,60 +103,72 @@ When true, this effect will be removed whenever the player starts a drug den run
 Since drug den gameplay follows roguelike conventions in which players start without any perks or equipment, beneficial status effects should also be cleared when starting a new run. For example, the benefits of doing yoga and lifting weights at the gym are cleared upon starting a new drug den run.
 
 ### *bool* subscribeCheckOnFightStart = false
-When true, at the start of a battle, the [checkOnFightStart](#checkonfightstart-array) method is called. This allows you to conditionally apply the status effect to a character at the beginning of a fight: see the method for more information.
+When true, at the start of a battle, the [checkOnFightStart](#array-checkonfightstart-_npc-_contextdictionary) method is called. This allows you to conditionally apply the status effect to a character at the beginning of a fight: see the method for more information.
 
 ### *int* turns = -1
 Typically used to track the remaining duration of the effect.
 
 When the effect is first applied, the base duration should be set with the _init method, and then decremented as time passes with the appropriate processing method:
 
-* For battle-only status effects, this property can be used to measure the effect's duration by battle turns, as the name suggests; in this case, the property is decremented with the [processBattleTurn](#processbattleturn-void) method. For example, the Bleeding status effect lasts for three turns by default, so turns = 3.
+* For battle-only status effects, this property can be used to measure the effect's duration by battle turns, as the name suggests; in this case, the property is decremented with the [processBattleTurn](#void-processbattleturn--) method. For example, the Bleeding status effect lasts for three turns by default, so turns = 3.
 
-* Alternatively, duration can be measured by game seconds, according to the in-game clock; in this case the property is decremented with the [processTime](#processtime-void) method. For example, the Yoga status effect lasts for twelve hours, so turns = 12\*60\*60.
+* Alternatively, duration can be measured by game seconds, according to the in-game clock; in this case the property is decremented with the [processTime](#void-processtime-_secondspassed-int) method. For example, the Yoga status effect lasts for twelve hours, so turns = 12\*60\*60.
 
 > [!IMPORTANT]
-> Don't forget to configure the [saveData](#dictionary-savedata) and [loadData](#void-loaddata) methods to write this property's value to save data. Otherwise, if the player saves and loads the game before the status effect expires, the status effect will 
+> Don't forget to configure the [saveData](#dictionary-savedata--) and [loadData](#void-loaddata-_data) methods to write this property's value to save data. Otherwise, if the player saves and loads the game before the status effect expires, the status effect will 
 
 
 ## Method Descriptions
 
-### *Buff* buff
+### *Buff* buff (buffid, args = [])
 
-### *bool* checkAvoidedBuff
+### *bool* checkAvoidedBuff (_npc) = false
 
-### *Array* checkOnFightStart
+### *Array* checkOnFightStart (_npc, _context:Dictionary)
 
-### *void* combine
+### *void* combine (_newArgs = [])
 
-### *BaseCharacter* contextGetEnemy
+### *BaseCharacter* contextGetEnemy (_context:Dictionary)
 
-### *String* contextGetEnemyID
+### *String* contextGetEnemyID (_context:Dictionary)
 
-### *float* getAccuracyMod
+### *float* getAccuracyMod ( )
 
-### *Array* getBuffs
+### *Array* getBuffs ( )
 
-### *float* getDamageMultiplierMod
+### *float* getDamageMultiplierMod (_damageType)
 
-### *float* getDodgeMod
+### *float* getDodgeMod ( )
 
-### *String* getEffectDesc
+### *String* getEffectDesc ( )
+Returns a brief description of the status effect.
 
-### *String* getEffectImage
+### *String* getEffectImage ( )
+Returns the resource path of the icon representing the status effect on the character panel.
 
-### *String* getEffectName
+### *String* getEffectName ( )
+Returns the name of the status effect that is visible to the player, displayed when hovering over its icon in the character panel.
 
-### *Color* getIconColor
+### *Color* getIconColor ( ) = IconColorBlue
+Returns the color of the icon representing the status effect on the character panel.
 
-### *float* getRecievedDamageMod
+While this can be any color you choose, there are a number of constants provided that you can choose from. The most commonly used colors are IconColorRed, typically used for negative effects; IconColorGreen, typically used for positive effects; and IconColorBlue, which is used for drug effects and also serves as the default icon color.
 
-### *String* getVisibleDescription
+### *float* getRecievedDamageMod (_damageType)
 
-### *void* _init
+### *String* getVisibleDescription ( )
+Returns the fully formatted description for the status effect presented by its tooltip when hovering over its icon in the character panel. Includes the description from [getEffectDesc](#string-geteffectdesc--) and the list of buffs from [getBuffs](#array-getbuffs--).
 
-### *void* initArgs
+### *void* _init ( )
 
-### *bool* isDrugEffect
+### *void* initArgs (_args = [])
+
+### *bool* isDrugEffect ( ) = false
+When this method returns true, the status effect is registered as an effect from a drug. Examples include the cumulative lust gain from heat pills during sex, the stamina boost from energy drinks during battle, and the fertility debuffs from birth control pills.
+
+This method's value is measured by two BaseCharacter methods:
+* **getDrugsInfluenceAmount()** returns an integer count of how many active drug effects a character currently has. Whenever a character cums while under the influence of drugs, their drug use fetish increases: this method's value serves as a multiplier for the amount their fetish score is incremented by.
+* **isUnderDrugsInfluence()** returns true if the character has any active drug effects.
 
 ### *void* loadData (_data)
 When a save file is loaded, this method reinitializes the properties with their respective values written to the file.
@@ -165,7 +177,7 @@ Each property is reinitialized as such:
 ```
 property = SAVE.loadVar(_data, "propertyKey", defaultValue)
 ```
-where _data is the save file being loaded, "propertyKey" is the key in the [saveData](#dictionary-savedata) dictionary corresponding to the property, and defaultValue is the value the property should be assigned if it doesn't have an entry in the saveData dictionary.
+where _data is the save file being loaded, "propertyKey" is the key in the [saveData](#dictionary-savedata--)) dictionary corresponding to the property, and defaultValue is the value the property should be assigned if it doesn't have an entry in the saveData dictionary.
 
 For example, the "Blocking" status effect's loadData method looks like this:
 ```
@@ -174,22 +186,23 @@ func loadData(_data):
 	howMuchBlock = SAVE.loadVar(_data, "howMuchBlock", 80)
 ``` 
 
-### *void* onFightEnd
+### *void* onFightEnd (_contex = {})
 
-### *void* onFightStart
+### *void* onFightStart (_contex = {})
 
-### *void* onSleeping
+### *void* onSleeping ( )
+Called when the player character sleeps each night.
 
-### *void* onSexEnded
+### *void* onSexEnded (_contex = {})
 
-### *void* onSexEvent
+### *void* onSexEvent (_event:SexEvent)
 
-### *void* onSexStarted
+### *void* onSexStarted (_contex = {})
 
 ### *void* processBattleTurn ( )
-Runs at the start of every player action during each turn of battle.
+Called at the start of every player action during each turn of battle.
 
-When decrementing [turns](#turns-int) during battle, the method usually looks like this:
+When decrementing [turns](#turns-int---1) during battle, the method usually looks like this:
 
 ```
 func processBattleTurn():
@@ -198,16 +211,16 @@ func processBattleTurn():
 		stop()
 ```
 
-### *void* processBattleTurnContex
+### *void* processBattleTurnContex (_contex = {})
 
-### *void* processSexTurn
+### *void* processSexTurn ( )
 
-### *void* processSexTurnContex
+### *void* processSexTurnContex (_contex = {})
 
 ### *void* processTime (_secondsPassed: int)
-Runs whenever the game clock is updated; in other words, whenever time passes in-game.
+Called whenever the game clock is updated; in other words, whenever time passes in-game.
 
-When tracking the duration of an effect with [turns](#turns-int), this method tends to look like this:
+When tracking the duration of an effect with [turns](#turns-int---1), this method tends to look like this:
 
 ```
 func processTime(_secondsPassed: int):
@@ -217,7 +230,7 @@ func processTime(_secondsPassed: int):
 ```
 
 ### *Dictionary* saveData ( )
-Returns a dictionary of the status effect's properties and their current values, in order to write them to save data. When a save is loaded, the [loadData](#void-loaddata) method uses this dictionary to reinitialize the effect.
+Returns a dictionary of the status effect's properties and their current values, in order to write them to save data. When a save is loaded, the [loadData](#void-loaddata-_data) method uses this dictionary to reinitialize the effect.
 
 For example, the "Blocking" status effect has two key properties: "turns" (the remaining duration of the effect) and "howMuchBlock" (the amount of damage to negate). Its saveData method looks like this:
 ```
@@ -231,11 +244,24 @@ func saveData():
 > [!TIP]
 > While it's useful for the keys and values in the saveData dictionary to have the same name, the key names are arbitrary. If you wish, you can shorten the key names to *slightly* optimize save file size.
 
-### *void* setCharacter ( c: BaseCharacter )
+### *void* setCharacter (c)
 Sets the [character](#basecharacter-character) property of the status effect when a new instance of a status effect is applied to a character.
 
-### *bool* shouldApplyTo
+### *bool* shouldApplyTo (_npc) = false
+When either the [alwaysCheckedForNPCs](#bool-alwayscheckedfornpcs--false) or [alwaysCheckedForPlayer](#bool-alwayscheckedforplayer--false) properties are true, this method is called every time the game scene is updated to check whether or not the status effect should be applied, kept, or removed. When the method returns true, the status effect is applied or kept; when it returns false, it is removed.
 
-### *bool* shouldHaveWideTooltip
+For example, the "ExhaustedStatus" status effect is applied to player characters when they run out of stamina. Its shouldApplyTo method looks like this:
+```
+func shouldApplyTo(_npc):
+	if(_npc.getStamina() <= 0):
+		return true
+	return false
+```
 
-### *void* stop
+### *bool* shouldHaveWideTooltip ( ) = false
+When true, this method doubles the width of the tooltip displayed when hovering over the status effect on the character panel.
+
+As of version 0.1.12, this is only used for the Fetishes display in character panels (called SexEngineLikes in the game files), where the tabulated list of fetishes requires the extra width to render properly.
+
+### *void* stop ( )
+When this method is called, the effect is removed from the character. Typically called by the [processBattleTurn](#void-processbattleturn--), [processTime](#void-processtime-_secondspassed-int), or [onSleeping](#void-onsleeping--) when22 conditions are met to end the status effect.
